@@ -1,0 +1,356 @@
+<html>
+    <script>
+        //data
+        class cepatSaji{
+            constructor(makanan,stok,expire,harga){
+                this.daftarMakanan=makanan,
+                this.daftarStok=stok,
+                this.daftarExpire=expire,
+                this.daftarHarga=harga
+            }
+        }
+        var daftarCepatSaji=[
+            new cepatSaji('Pizza',10,'25/02/2019',10000),
+            new cepatSaji('Hamburger',20,'20/02/2019',20000),
+            new cepatSaji('Donat',30,'10/02/2019',15000)
+        ]
+
+        function printList1(){
+            var output='Daftar produk\n\n'
+            for(let i=0;i<daftarCepatSaji.length;i++){
+                output+=(i+1)+'. '+daftarCepatSaji[i].daftarMakanan+'  |   stok : '+daftarCepatSaji[i].daftarStok+'  |   exp : '+daftarCepatSaji[i].daftarExpire+'  |   harga : '+daftarCepatSaji[i].daftarHarga+'\n'                
+            }return output
+        }
+
+        class Pakaian{
+            constructor(pakaian,stok,ukuran,harga){
+                this.daftarPakaian=pakaian,
+                this.daftarStok=stok,
+                this.daftarUkuran=ukuran,
+                this.daftarHarga=harga
+            }
+        }
+        var daftarPakaian=[
+            new Pakaian('Sweater',10,'S',10000),
+            new Pakaian('Jaket',20,'M',20000),
+            new Pakaian('Hoodie',30,'L',15000)
+        ]
+        
+        function printList2(){
+            var output='Daftar produk\n\n'
+            for(let i=0;i<daftarPakaian.length;i++){
+                output+=(i+1)+'. '+daftarPakaian[i].daftarPakaian+'  |   stok : '+daftarPakaian[i].daftarStok+'  |   ukuran : '+daftarPakaian[i].daftarUkuran+'  |   harga : '+daftarPakaian[i].daftarHarga+'\n'                
+            }return output
+        }
+
+        class Elektronik{
+            constructor(elektronik,stok,garansi,harga){
+                this.daftarElektronik=elektronik,
+                this.daftarStok=stok,
+                this.daftarGaransi=garansi,
+                this.daftarHarga=harga
+            }
+        }
+        var daftarElektronik=[
+            new Elektronik('TV',10,'2',10000),
+            new Elektronik('HP',20,'3',20000),
+            new Elektronik('Laptop',30,'1',15000)
+        ]
+
+        function printList3(){
+            var output='Daftar produk\n\n'
+            for(let i=0;i<daftarElektronik.length;i++){
+                output+=(i+1)+'. '+daftarElektronik[i].daftarElektronik+'  |   stok : '+daftarElektronik[i].daftarStok+'  |   status garansi : '+daftarElektronik[i].daftarGaransi+'  |   harga : '+daftarElektronik[i].daftarHarga+'\n'                
+            }return output
+        }
+        
+        class Buah{
+            constructor(buah,stok,kandungangula,harga){
+                this.daftarBuah=buah,
+                this.daftarStok=stok,
+                this.daftarKandunganGula=kandungangula,
+                this.daftarHarga=harga
+            }
+        }
+        var daftarBuah=[
+            new Buah('apel',10,'2',10000),
+            new Buah('anggur',20,'3',20000),
+            new Buah('berry',30,'1',15000)
+        ]
+
+        function printList4(){
+            var output='Daftar produk\n\n'
+            for(let i=0;i<daftarBuah.length;i++){
+                output+=(i+1)+'. '+daftarBuah[i].daftarBuah+'  |   stok : '+daftarBuah[i].daftarStok+'  |   kandungan gula   : '+daftarBuah[i].daftarKandunganGula+'  |   harga : '+daftarBuah[i].daftarHarga+'\n'                
+            }return output
+        }
+        // data menu pembayaran
+        class Cart{
+            constructor(barang,qty,harga){
+                this.daftarBelanja=barang
+                this.daftarQty=qty
+                this.daftarHarga=harga
+            }
+        }
+        var cartList=[]
+
+        function sumTotalHarga(){
+            var totalharga=0
+            for(let i=0;i<cartList.length;i++){
+                totalharga+=(cartList[i].daftarQty)*(cartList[i].daftarHarga)
+            }return totalharga
+        }
+
+        function printBill(){
+            var strukBelanja='Struk Belanja\n=========================================\n'
+            for(let i=0;i<cartList.length;i++){
+                strukBelanja+=(i+1)+'. '+(cartList[i].daftarBelanja)+' = '+(cartList[i].daftarQty)+' x Rp '+(cartList[i].daftarHarga)+' = '+((cartList[i].daftarQty)*(cartList[i].daftarHarga))+'\n'
+            }
+            strukBelanja+='=============================================\n'
+            strukBelanja+='Total seluruhnya Rp. '+sumTotalHarga()
+            return strukBelanja
+        }
+        //mulai
+        do{
+            do{
+                var menuUtama=prompt('Apa yang ingin anda lakukan ?\n\n0. Menampilkan daftar produk\n1. Menambah produk\n2. Menghapus produk\n3. Membeli produk\n4. Keluar')
+                if(menuUtama<0||menuUtama>4){
+                    alert('salah memasukkan menu, pilih no 0-4')
+                }
+            }while(menuUtama<0||menuUtama>4)
+        //menu 0
+            if (menuUtama==0) {
+                do{
+                var daftarProduk=prompt('Pilih produk yang anda inginkan:\n\n1. Cepat saji\n2. Pakaian\n3. Elektronik\n4. Buah')
+                    if(daftarProduk==1){
+                        alert(printList1())
+                    }else if(daftarProduk==2){
+                        alert(printList2())
+                    }else if(daftarProduk==3){
+                        alert(printList3())
+                    }else if(daftarProduk==4){
+                        alert(printList4())            
+                    }else{
+                        alert('salah memasukkan daftar, mohon masukkan nomor 1-4')
+                    }
+                }while(daftarProduk<1||daftarProduk>4)
+            //menu 1  
+            }else if (menuUtama==1){
+                do{
+                    var kategori=prompt('Kategori produk yang ingin ditambahkan:\n\n1. Cepat saji\n2. Pakaian\n3. Elektronik\n4. Buah')
+                    if(kategori<1||kategori>4){
+                    alert('salah memasukkan menu, pilih no 1-4')
+                    }
+                
+
+                //kategori 1
+                    if (kategori==1){
+                    var tambahMakanan=prompt('masukkan nama makanan:')
+                    var tambahStok=prompt('masukkan jumlah makanan:')
+                    var tambahExpire=prompt('masukkan tanggal expired:')
+                    var tambahHarga=prompt('masukkan harga makanan:')
+                    daftarCepatSaji.push(new cepatSaji(tambahMakanan,tambahStok,tambahExpire,tambahHarga))
+                    alert(printList1())
+                    }
+                    
+                //kategori 2
+                    if (kategori==2){
+                    var tambahPakaian=prompt('masukkan nama pakaian:')
+                    var tambahStok=prompt('masukkan jumlah pakaian:')
+                    var tambahUkuran=prompt('masukkan ukuran:')
+                    var tambahHarga=prompt('masukkan harga pakaian:')
+                    daftarPakaian.push(new Pakaian(tambahPakaian,tambahStok,tambahUkuran,tambahHarga))
+                    alert(printList2())
+                }
+                    
+                //kategori 3
+                    if (kategori==3){
+                    var tambahElektronik=prompt('masukkan nama elektronik:')
+                    var tambahStok=prompt('masukkan jumlah elektronik:')
+                    var tambahGaransi=prompt('masukkan status garansi:')
+                    var tambahHarga=prompt('masukkan harga elektronik:')
+                    daftarElektronik.push(new Elektronik(tambahElektronik,tambahStok,tambahGaransi,tambahHarga))
+                    alert(printList3())
+                    }
+                    
+                //kategori 4
+                    if (kategori==4){
+                    var tambahBuah=prompt('masukkan nama buah:')
+                    var tambahStok=prompt('masukkan jumlah buah:')
+                    var tambahKandunganGula=prompt('masukkan kandungan gula:')
+                    var tambahHarga=prompt('masukkan harga buah:')
+                    daftarBuah.push(new Buah(tambahBuah,tambahStok,tambahKandunganGula,tambahHarga))
+                    alert(printList4())
+                    }
+                var konfirmasimenuTambah=confirm('kembali ke menu tambah produk?')
+                if (!konfirmasimenuTambah){
+                alert('tidak jadi tambah produk')
+                }    
+                }while(konfirmasimenuTambah)
+            // menu 2
+            }else if (menuUtama==2){
+                do{
+                    var hapusProduk=prompt('Pilih produk yang ingin anda hapus:\n\n1. Cepat saji\n2. Pakaian\n3. Elektronik\n4. Buah')
+                    if(hapusProduk==1){
+                        var indexhapusMakanan=prompt(printList1())-1
+                        var konfirmasiHapusMakanan=confirm('yakin mau hapus makanan '+(daftarCepatSaji[indexhapusMakanan].daftarMakanan)+' dari sini?')
+                        if(konfirmasiHapusMakanan){
+                            daftarCepatSaji.splice(indexhapusMakanan,1)
+                            alert('berhasil hapus data')
+                            alert(printList1())               
+                        }else{
+                            alert('tidak jadi hapus')
+                        }
+                    }else if(hapusProduk==2){
+                        var indexhapusPakaian=prompt(printList2())-1
+                        var konfirmasiHapusPakaian=confirm('yakin mau hapus pakaian '+(daftarPakaian[indexhapusPakaian].daftarPakaian)+' dari sini?')
+                        if(konfirmasiHapusPakaian){
+                            daftarPakaian.splice(indexhapusPakaian,1)
+                            alert('berhasil hapus data')
+                            alert(printList2())
+                        }else{
+                            alert('tidak jadi hapus')
+                        }
+                    }else if(hapusProduk==3){
+                        var indexhapusElektronik=prompt(printList3())-1
+                        var konfirmasiHapusElektronik=confirm('yakin mau hapus produk '+(daftarElektronik[indexhapusElektronik].daftarElektronik)+' dari sini?')
+                        if(konfirmasiHapusElektronik){
+                            daftarElektronik.splice(indexhapusElektronik,1)
+                            alert('berhasil hapus data')
+                            alert(printList3())
+                        }else{
+                            alert('tidak jadi hapus')
+                        }
+                    }else if(hapusProduk==4){
+                        var indexhapusBuah=prompt(printList4())-1
+                        var konfirmasiHapusBuah=confirm('yakin mau hapus buah '+(daftarBuah[indexhapusBuah].daftarBuah)+' dari sini?')
+                        if(konfirmasiHapusBuah){
+                            daftarBuah.splice(indexhapusBuah,1)
+                            alert('berhasil hapus data')
+                            alert(printList4())
+                        }else{
+                            alert('tidak jadi hapus')
+                        }
+                    }else{
+                        alert('salah memasukkan daftar, mohon masukkan nomor 1-4')
+                    }
+                var konfirmasimenuHapus=confirm('kembali ke menu hapus produk?')
+                if (!konfirmasimenuHapus){
+                alert('tidak jadi hapus data')
+                }    
+                }while(konfirmasimenuHapus)
+            // menu 3
+            }else if (menuUtama==3){
+                do{
+                    var pilihanProduk=prompt('Pilih produk yang ingin anda beli:\n\n1. Cepat saji\n2. Pakaian\n3. Elektronik\n4. Buah')
+                if(pilihanProduk==1){
+                    var pilihanBelanja=prompt(printList1())-1
+                    do{
+                        var qty=parseInt(prompt('mau beli '+daftarCepatSaji[pilihanBelanja].daftarMakanan+' berapa?'))
+                        if(qty>daftarCepatSaji[pilihanBelanja].daftarStok){
+                            alert('input ulang bro ngak ada stok segitu')
+                        }else{daftarCepatSaji[pilihanBelanja].daftarStok-=qty
+                            break
+                        }
+                    }while(true)
+                        var adadata=false
+                        var index=-1
+                        // untuk cek nama barang belanjaan yang sama
+                        for(var i=0;i<cartList.length;i++){
+                            if (cartList[i].daftarBelanja===daftarCepatSaji[pilihanBelanja].daftarMakanan){
+                                adadata=true
+                                index=i
+                            }
+                        }
+                        if (adadata) {
+                            cartList[index].daftarQty+=qty
+                        }else{
+                            cartList.push(new Cart(daftarCepatSaji[pilihanBelanja].daftarMakanan,qty,daftarCepatSaji[pilihanBelanja].daftarHarga))
+                        }
+                }else if(pilihanProduk==2){
+                    var pilihanBelanja=prompt(printList2())-1
+                    do{
+                        var qty=parseInt(prompt('mau beli '+daftarPakaian[pilihanBelanja].daftarPakaian+' berapa?'))
+                        if(qty>daftarPakaian[pilihanBelanja].daftarStok){
+                            alert('input ulang bro ngak ada stok segitu')
+                        }else{daftarPakaian[pilihanBelanja].daftarStok-=qty
+                            break
+                        }
+                    }while(true)
+                        var adadata=false
+                        var index=-1
+                        for(var i=0;i<cartList.length;i++){
+                            if (cartList[i].daftarBelanja===daftarPakaian[pilihanBelanja].daftarPakaian){
+                                adadata=true
+                                index=i
+                            }
+                        }
+                        if (adadata) {
+                            cartList[index].daftarQty+=qty
+                        }else{
+                            cartList.push(new Cart(daftarPakaian[pilihanBelanja].daftarPakaian,qty,daftarPakaian[pilihanBelanja].daftarHarga))
+                        }
+                }else if(pilihanProduk==3){
+                    var pilihanBelanja=prompt(printList3())-1
+                    do{
+                        var qty=parseInt(prompt('mau beli '+daftarElektronik[pilihanBelanja].daftarElektronik+' berapa?'))
+                        if(qty>daftarElektronik[pilihanBelanja].daftarStok){
+                            alert('input ulang bro ngak ada stok segitu')
+                        }else{daftarElektronik[pilihanBelanja].daftarStok-=qty
+                            break
+                        }
+                    }while(true)
+                        var adadata=false
+                        var index=-1
+                        for(var i=0;i<cartList.length;i++){
+                            if (cartList[i].daftarBelanja===daftarElektronik[pilihanBelanja].daftarElektronik){
+                                adadata=true
+                                index=i
+                            }
+                        }
+                        if (adadata) {
+                            cartList[index].daftarQty+=qty
+                        }else{
+                            cartList.push(new Cart(daftarElektronik[pilihanBelanja].daftarElektronik,qty,daftarElektronik[pilihanBelanja].daftarHarga))
+                        }
+                }else if(pilihanProduk==4){
+                    var pilihanBelanja=prompt(printList4())-1
+                    do{
+                        var qty=parseInt(prompt('mau beli '+daftarBuah[pilihanBelanja].daftarBuah+' berapa?'))
+                        if(qty>daftarBuah[pilihanBelanja].daftarStok){
+                            alert('input ulang bro ngak ada stok segitu')
+                        }else{daftarBuah[pilihanBelanja].daftarStok-=qty
+                            break
+                        }
+                    }while(true)
+                        var adadata=false
+                        var index=-1
+                        for(var i=0;i<cartList.length;i++){
+                            if (cartList[i].daftarBelanja===daftarBuah[pilihanBelanja].daftarBuah){
+                                adadata=true
+                                index=i
+                            }
+                        }
+                        if (adadata) {
+                            cartList[index].daftarQty+=qty
+                        }else{
+                            cartList.push(new Cart(daftarBuah[pilihanBelanja].daftarBuah,qty,daftarBuah[pilihanBelanja].daftarHarga))
+                        }
+                }else{
+                    alert('salah memasukkan daftar, mohon masukkan nomor 1-4')
+                }
+                var konfirmasiBelanja=confirm('mau belanja lagi?')
+                }while(konfirmasiBelanja)
+                alert(printBill())
+            }else{
+                alert('terimakasih telah berkunjung ke toko kami')
+                break
+            }
+        var konfirmasiMenuUtama=confirm('kembali ke menu utama?')
+        if (!konfirmasiMenuUtama){
+            alert('terimakasih telah berkunjung ke toko kami')
+        }
+        }while(konfirmasiMenuUtama)
+
+    </script>
+</html>
